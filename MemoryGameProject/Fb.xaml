@@ -1,0 +1,13 @@
+﻿<Window x:Class="MemoryGameProject.Fb"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:MemoryGameProject"
+		mc:Ignorable="d"
+		WindowStartupLocation="CenterScreen"
+		Title="Facebook-Memory Game" Height="408.947" Width="628.195" Icon="Images/icon.png">
+	<Grid>
+		<WebBrowser Name="WBrowser" Navigated="LoginWebBrowserNavigated" Margin="0,0,0,0"/>
+	</Grid>
+</Window>

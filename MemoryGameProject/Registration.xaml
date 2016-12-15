@@ -1,0 +1,175 @@
+﻿<Window x:Class="MemoryGameProject.Registration"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:MemoryGameProject"
+		mc:Ignorable="d"
+		WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+		Icon="Images/registration.ico"
+		Title="" Height="514.445" Width="558.015">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value=".6"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                                <Setter Property="Opacity" TargetName="Chrome" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid ClipToBounds="True" SnapsToDevicePixels="True" ToolTip="Registration" Margin="0,30,2,27">
+        <Grid.Resources>
+            <Color x:Key="Color1">#764A1E1E</Color>
+        </Grid.Resources>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#fff" Offset="3"/>
+                <GradientStop Color="{DynamicResource Color1}" Offset="5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="30,1,0,0" Name="textBlockHeading" Text="Registration:" VerticalAlignment="Top" Width="110"  FontSize="17" FontStretch="ExtraCondensed" ToolTip="Registration" FontWeight="Bold"/>
+        <!--Button as a Link button using style-->
+        <Button Margin="474,5,31,392" Content="Log In" Cursor="Hand" Click="Login_Click" ToolTip="Log In">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock TextDecorations="Underline">
+					<ContentPresenter />
+                    </TextBlock>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="Navy" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="Green" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <!--end Button as a Link button using style-->
+        <Grid Margin="30,29,31,24" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="81*"/>
+                <ColumnDefinition Width="383*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.4,1.5" StartPoint="0.5,0" SpreadMethod="Repeat">
+                    <GradientStop Color="#858585" Offset="10"/>
+                    <GradientStop Color="{DynamicResource Color1}" Offset="35"/>
+                    <GradientStop Color="#fff" Offset=".3"/>
+                    <GradientStop Color="White" Offset=".3"/>
+                    <GradientStop Color="#1BBC9B" Offset="0.967"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.Effect>
+                <DropShadowEffect Color="#D0D0D0"/>
+            </Grid.Effect>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="252*" />
+                <!--   <RowDefinition Height="12*" />-->
+            </Grid.RowDefinitions>
+
+            <TextBlock Height="20" HorizontalAlignment="Left" Margin="45,4,0,0" x:Name ="ErrorMsg" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" Grid.ColumnSpan="2" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,31,0,0" Name="TextBlockFirstname" Text="           First Name:" VerticalAlignment="Top" Width="110" ToolTip="First Name" Grid.ColumnSpan="2"/>
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,59,0,0" Name="TextBlockLastName" Text="           Last Name:" VerticalAlignment="Top" Width="110" ToolTip="Last Name" Grid.ColumnSpan="2" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,86,0,0" Name="TextBlockEmailId" Text="                   Email:" VerticalAlignment="Top" Width="110" ToolTip="Email" Grid.ColumnSpan="2" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,114,0,0" Name="TextBlockPassword" Text="             Password:" VerticalAlignment="Top" Width="110" ToolTip="Password" Grid.ColumnSpan="2" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,141,0,0" Name="TextBlockConfirmPwd" Text="Confirm Password:" VerticalAlignment="Top" Width="110" ToolTip="Confirm Password" Grid.ColumnSpan="2" />
+
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="101.667,29,0,0" Name="TextBoxFirstName" VerticalAlignment="Top" Width="222" ToolTip="FirstName" Grid.Column="1" PreviewKeyDown="FirstName_PreviewKeyDown" />
+
+
+
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="101.667,56,0,0" Name="TextBoxLastName" VerticalAlignment="Top" Width="222" ToolTip="LastName" Grid.Column="1" PreviewKeyDown="LastName_PreviewKeyDown" >
+
+            </TextBox>
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="101.667,84,0,0" Name="TextBoxEmail" VerticalAlignment="Top" Width="222" ToolTip="Email" Grid.Column="1" PreviewKeyDown="Email_PreviewKeyDown" >
+
+            </TextBox>
+
+            <PasswordBox Height="23" HorizontalAlignment="Left" Margin="101.667,112,0,0" Name="PasswordBox" VerticalAlignment="Top" Width="222" ToolTip="Password" Grid.Column="1" CommandManager.PreviewExecuted="textBox_PreviewExecuted" PreviewKeyDown="Password_PreviewKeyDown" >
+
+            </PasswordBox>
+            <!--For password-->
+            <PasswordBox Height="23" HorizontalAlignment="Left" Margin="101.667,139,0,0" Name="PasswordBoxConfirm" VerticalAlignment="Top" Width="222" ToolTip="ConfirmPassword" Grid.Column="1" CommandManager.PreviewExecuted="textBox_PreviewExecuted" PreviewKeyDown="ConfPsw_PreviewKeyDown" >
+
+            </PasswordBox>
+            <Image x:Name="Image" HorizontalAlignment="Left" Height="45" Margin="101,171,0,0" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+            <TextBox x:Name="TextBoxCaptcha" Padding="5,0,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="37" Margin="101.667,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="222" PreviewKeyDown="TextBoxCaptcha_PreviewKeyDown" Grid.Column="1" >
+
+            </TextBox>
+            <Button x:Name="ButtonSpeech" Style="{DynamicResource NoChromeButton}" Click="ButtonVoice_Clicked" Margin="329,134,37,110" ToolTip="Spell" Grid.Column="1" >
+                <Image Source="Images/iconSpeech.jpg" Stretch="UniformToFill" Height="20" Width="20" RenderTransformOrigin="0.35,0"/>
+            </Button>
+            <Button x:Name="ButtonAgain" Style="{DynamicResource NoChromeButton}" Click="ButtonAgain_Clicked" Margin="329,193,37,80" ToolTip="Change Image" Grid.Column="1" >
+                <Image Source="Images/aroundArrow.jpg" Stretch="UniformToFill" Height="20" Width="20"/>
+            </Button>
+            <Button Name="SubmitButton" Content="Submit" Height="37"  HorizontalAlignment="Left" Background="#FF5AB9A6" Margin="102,281,0,0" VerticalAlignment="Top" Width="98" Click="SubmitButton_Click" ToolTip="Submit" FontFamily="Arial Rounded MT Bold" FontSize="14" BorderBrush="#FFA09E9E"  FontWeight="Bold" Foreground="White" Grid.Column="1" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="Background" Value="#294D71"/>
+                        <Setter Property="BorderBrush" Value="#fff"/>
+                        <Setter Property="CornerRadius" Value="3"/>
+                        <Setter Property="BorderBrush" Value="#637288"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="ResetButton" Content="Reset" Height="37" HorizontalAlignment="Left" Background="#FF84888D" Margin="226,281,0,0" VerticalAlignment="Top" Width="98" Click="ResetButton_Click" ToolTip="Reset" Foreground="White" FontSize="14" FontWeight="Bold" Grid.Column="1" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="BorderBrush" Value="#fff"/>
+                        <Setter Property="CornerRadius" Value="3"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="BorderBrush" Value="#61877F"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Image Source="Images/errMsg.png" Stretch="UniformToFill" x:Name="errImg1" Height="13" Width="13" OpacityMask="Crimson" Opacity="0" RenderTransformOrigin="8.6,-5.45" Margin="308,34,0,0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Source="Images/errMsg.png" Stretch="UniformToFill" x:Name="errImg2" Height="13" Width="13" Margin="308,61,0,0" RenderTransformOrigin="0.192,-1.462" Opacity="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Source="Images/errMsg.png" Stretch="UniformToFill" x:Name="errImg3" Width="13" Height="13" Margin="308,89,0,0" Opacity="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Source="Images/errMsg.png" Stretch="UniformToFill" x:Name="errImg4" Height="13" Width="13" Margin="308,117,0,0" RenderTransformOrigin="9.475,2.7" Opacity="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Source="Images/errMsg.png" Stretch="UniformToFill" x:Name="errImg5" Height="13" Width="13" Margin="308,144,0,0" Opacity="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <!--<Image x:Name="ImageSound" Source="Images/
+            " HorizontalAlignment="Left" Height="37" Margin="391,221,0,0" VerticalAlignment="Top" Width="37"/>-->
+        </Grid>
+    </Grid>
+</Window>

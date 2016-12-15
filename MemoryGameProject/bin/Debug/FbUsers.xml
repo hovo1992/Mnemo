@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Accounts>
+  <Account ID="600933090066974">
+    <FirstName>Hovo Kajoyan</FirstName>
+    <Score>12</Score>
+  </Account>
+  <Account ID="932493843539925">
+    <FirstName>Elen Asatryan</FirstName>
+    <Score>12</Score>
+    <Score>22</Score>
+    <Score>58</Score>
+    <Score>20</Score>
+    <Score>24</Score>
+    <Score>18</Score>
+  </Account>
+  <Account ID="647400128749519">
+    <FirstName>Anna Ohanyan</FirstName>
+    <Score>12</Score>
+  </Account>
+  <Account ID="1056516637765865">
+    <FirstName>Tiruhi Gaboyan</FirstName>
+    <Score>12</Score>
+    <Score>22</Score>
+    <Score>20</Score>
+    <Score>24</Score>
+  </Account>
+</Accounts>

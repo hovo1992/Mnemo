@@ -1,0 +1,207 @@
+﻿<Window x:Class="MemoryGameProject.CopyLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemoryGameProject"
+        mc:Ignorable="d"
+        Title="CopyLogin" Height="466.667" Width="354">
+    <Window.Resources>
+        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource" 
+                                 Background="Transparent" 
+                                 Panel.ZIndex="2" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="LightGray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--<Style x:Key="placeHolder" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource {x:Type PasswordBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource" 
+                                 Background="Transparent" 
+                                 Panel.ZIndex="2" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="LightGray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+
+    </Window.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Image x:Key="myImage" Source="Images/test.jpg">
+                <Image.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5" >
+                        <GradientStop Offset="0.0" Color="#00000000" />
+                        <GradientStop Offset="1.0" Color="#FF000000" />
+                    </LinearGradientBrush>
+                </Image.OpacityMask>
+            </Image>
+            <VisualBrush x:Key="myBrush"  Visual="{StaticResource myImage}"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="195*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="166*"/>
+            <ColumnDefinition Width="129*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="47*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Repeat">
+                <GradientStop Color="#2986B1" Offset="0"/>
+                <GradientStop Color="#fff" Offset=".5"/>
+                <GradientStop Color="#2986B1" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+
+        <CheckBox x:Name="checkBox" Content="Play without registration" Margin="9,227,0,0" Checked="checkBox_Checked" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="142" FontFamily="Comic Sans MS" FontSize="10" >
+
+        </CheckBox>
+        <Label x:Name="LabelEmail" Content="Email" HorizontalAlignment="Center" Foreground="#FFB5B5B5" HorizontalContentAlignment="Center" Height="22" Margin="92,19,49,0" VerticalAlignment="Top" Width="154" ToolTip="Email" FontSize="11" MouseLeftButtonUp="Email_MouseLeftButtonUp" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" Grid.Row="1"/>
+
+        <Image Source="Images/user.png" Stretch="UniformToFill" Height="22" Width="22" Margin="0,47,79,0" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="-12.692,-0.538" ToolTip="Email" Grid.Row="1"/>
+        <TextBox x:Name="TextBoxEmail"  Style="{StaticResource placeHolder}" Tag="Email" HorizontalAlignment="Left" Height="23" Margin="92,46,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="154" MaxLength="80" Padding="1, 1" ToolTip="Email" Panel.ZIndex="-10" PreviewKeyDown="TextBoxEmail_PreviewKeyDown" Grid.ColumnSpan="2" Grid.Row="1" />
+        <Label x:Name="LabelPassword" Content="Password" HorizontalAlignment="Left" Height="22" Foreground="#FFB5B5B5" HorizontalContentAlignment="Center" FontSize="11" Margin="90,72,0,0" VerticalAlignment="Top" Width="154" ToolTip="Password" MouseLeftButtonUp="Password_MouseLeftButtonUp" RenderTransformOrigin="0.5,0.5" FontFamily="Comic Sans MS" Grid.Row="1" Grid.ColumnSpan="2" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.591"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.306"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Image Source="Images/unlock.png" Stretch="UniformToFill" Height="22" Width="22" Margin="65,97,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-12.692,-0.538" ToolTip="Password" Grid.Row="1"/>
+
+        <PasswordBox x:Name="PasswordBox"  HorizontalAlignment="Left" Height="23" Margin="92,97,0,0" VerticalAlignment="Top" Width="154" PreviewKeyDown="PasswordBox_PreviewKeyDown" MaxLength="50" Padding="1, 3" ToolTip="Password" Grid.ColumnSpan="2" Grid.Row="1" />
+        <TextBlock x:Name ="ErrorMsg" Height="20" TextAlignment="Center" HorizontalAlignment="Left" Margin="39,126,0,0" VerticalAlignment="Top" Width="260" OpacityMask="Crimson" Foreground="#FFE5572C" Grid.ColumnSpan="3" Grid.Row="1" />
+        <Button x:Name="ButtonSignIn" Content="Log In" HorizontalAlignment="Left" Height="26" Margin="90,151,0,0" VerticalAlignment="Top" Width="154"  Click="ButtonSignIn_Click" ToolTip="Log In" Background="#FF668F25" Foreground="#FFFCFFFE" FontSize="14" Grid.ColumnSpan="2" FontFamily="Comic Sans MS" Grid.Row="1" >
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="5" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Background" Value="#294D71"/>
+                    <Setter Property="BorderBrush" Value="#fff"/>
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="BorderBrush" Value="#6CC4B2"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonMultiplayer" Content="2 Players" ToolTip="2 Players"  Margin="152,212,0,0" Background="#FF668F25" VerticalAlignment="Top" RenderTransformOrigin="0.269,0.028" Click="ButtonMultiplayer_Click" Foreground="White" HorizontalAlignment="Left" Width="76" Height="23" FontFamily="Comic Sans MS" Grid.Row="1" Grid.ColumnSpan="2">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="5" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Background" Value="#294D71"/>
+                    <Setter Property="BorderBrush" Value="#fff"/>
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="BorderBrush" Value="#6CC4B2"/>
+                </Style>
+            </Button.Resources>
+
+        </Button>
+        <Button x:Name="ButtonPlay" Content="Play" HorizontalAlignment="Left" Margin="73,212,0,0" Background="#FF668F25" Width="76" Height="23" Click="ButtonPlay_Click" ToolTip="Play" RenderTransformOrigin="0.269,0.028" Foreground="White" Grid.Column="1" VerticalAlignment="Top" FontFamily="Comic Sans MS" Grid.Row="1" Grid.ColumnSpan="3" >
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="5" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+            </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Background" Value="#294D71"/>
+                    <Setter Property="BorderBrush" Value="#fff"/>
+                    <Setter Property="CornerRadius" Value="3"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="BorderBrush" Value="#6CC4B2"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Margin="81,280,0,0" Content="Sign Up" Background="#B9472C" Click="ButtonSignUp_Click" ToolTip="Sign Up" Foreground="White" HorizontalAlignment="Left" Width="76" Height="26" Grid.Column="1" VerticalAlignment="Top" FontFamily="Comic Sans MS" Grid.Row="1" Grid.ColumnSpan="3" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#B9472C"/>
+                    <Setter Property="CornerRadius" Value="2"/>
+                    <Setter Property="BorderThickness" Value="3"/>
+                    <Setter Property="BorderBrush" Value="#B9472C"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock TextWrapping="Wrap" Text="... or login with:" Margin="136,318,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="76" Height="23" VerticalAlignment="Top" Grid.Row="1" FontSize="10" Foreground="#FF657176" FontFamily="Comic Sans MS"/>
+        <Button x:Name="ButtonSignInWithFacebook" Content="Facebook" HorizontalAlignment="Left" Height="23" Margin="23,341,0,0" VerticalAlignment="Top" Width="76" Click="ButtonSignInWithFacebook_Click" ToolTip="Sign In With Facebook" Background="#FF4267B2" Foreground="White" BorderBrush="#FF4267B2" Grid.Row="1" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#FF4267B2"/>
+                    <Setter Property="CornerRadius" Value="2"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonSignInWithTwitter" Content="Twitter" HorizontalAlignment="Left" Height="23" Margin="136,341,0,0" VerticalAlignment="Top" Width="76" Click="ButtonSignInWithTwitter_Click" ToolTip="Sign In With Twitter" Background="#54C1DE" Foreground="White" Grid.Row="1" Grid.ColumnSpan="2" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#54C1DE"/>
+
+                    <Setter Property="CornerRadius" Value="2"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonSignInWithGoogle" Content="Google+" HorizontalAlignment="Right" Height="23" Margin="0,341,23,0" VerticalAlignment="Top" Width="76" Click="ButtonSignInWithGoogle_Click" ToolTip="Sign In With Google" Background="#E55E4C" Foreground="White" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="1" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#E55E4C"/>
+                    <Setter Property="CornerRadius" Value="2"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>
