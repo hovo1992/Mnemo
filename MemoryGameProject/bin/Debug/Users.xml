@@ -1,2 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Accounts />
+<Accounts>
+  <Account ID="1">
+    <FirstName>sadf;hgfbuhfasu</FirstName>
+    <LastName>wefkjuerfewfef</LastName>
+    <Email>njvbsvjsvbh@mail.ru</Email>
+    <Password>E219B56989281A7846DD836161D7A2BD</Password>
+  </Account>
+</Accounts>

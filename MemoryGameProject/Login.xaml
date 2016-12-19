@@ -129,7 +129,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="ButtonMultiplayer" Content="2 Players" Height="36" Margin="25,433,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" RenderTransformOrigin="0.269,0.028" FontWeight="Bold" Click="ButtonMultiplayer_Click" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="95" Grid.Column="1" Background="#FF1BBC9B">
+			<Button x:Name="ButtonMultiplayer" Opacity="0.6" IsEnabled="False" Content="2 Players" Height="36" Margin="25,433,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" RenderTransformOrigin="0.269,0.028" FontWeight="Bold" Click="ButtonMultiplayer_Click" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="95" Grid.Column="1" Background="#FF1BBC9B">
                
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -152,7 +152,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <CheckBox x:Name="checkBox" Content="Play without registration" Margin="10,433,0,0" Checked="checkBox_Checked" Height="36" VerticalAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Width="142" FontFamily="Comic Sans MS" FontSize="10" >
+			<CheckBox x:Name="checkBox" Content="Play without registration" Margin="10,433,0,0" Checked="checkBox_Checked" Unchecked="checkBox_UnChecked" Height="36" VerticalAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Width="142" FontFamily="Comic Sans MS" FontSize="10" >
 
             </CheckBox>
 

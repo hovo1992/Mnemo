@@ -223,5 +223,11 @@ namespace MemoryGameProject
 			ButtonPlay.IsEnabled = true;
 			ButtonPlay.Opacity = 1;
 		}
-    }
+
+		private void checkBox_UnChecked(object sender, RoutedEventArgs e)
+		{
+			ButtonPlay.IsEnabled = false;
+			ButtonPlay.Opacity = 0.5;
+		}
+	}
 }
